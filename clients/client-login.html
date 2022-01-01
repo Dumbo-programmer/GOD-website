@@ -138,6 +138,153 @@ document.getElementById('email').addEventListener('click', () => {
 document.getElementById('password').addEventListener('click', () => {
   document.getElementById('two').style.top = '423px'
 })
+////////////////////////////////////////////////////
+if(localStorage.getItem('language') == 'english'){
+document.getElementById('one').innerText = "Email Address"
+document.getElementById('two').innerText = "Password"
+document.getElementById("s").src = "../eng.png"
+document.getElementById("eg").style.display = 'block'
+ document.getElementById("le").innerText = "EN"   
+}else if(localStorage.getItem('language') == 'chinese'){
+
+
+      document.getElementById('one').innerText = "電子郵件"
+document.getElementById('two').innerText = "密碼"
+document.getElementById("s").src = "https://www.countryflags.io/cn/flat/32.png"
+document.getElementById("cn").style.display = 'block'
+document.getElementById("le").innerText = "CH"     
+}else if(localStorage.getItem('language') == 'hindi'){
+  document.getElementById('one').innerText = "ईमेल"
+document.getElementById('two').innerText = "पासवर्ड"
+document.getElementById("le").innerText = "HN"   
+document.getElementById("s").src = "https://www.countryflags.io/in/flat/32.png"
+document.getElementById("hn").style.display = 'block'
+    
+}else if(localStorage.getItem('language') == 'spanish'){
+  document.getElementById('one').innerText = "Email Address"
+document.getElementById('two').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/es/flat/32.png"
+document.getElementById("sn").style.display = 'block'
+document.getElementById("le").innerText = "SP"   
+}else if(localStorage.getItem('language') == 'french'){
+  document.getElementById('one').innerText = "Email Address"
+document.getElementById('two').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/fr/flat/32.png"
+document.getElementById("fn").style.display = 'block'
+document.getElementById("le").innerText = "FR"   
+}
+
+    if(localStorage.getItem('language') == 'arabic'){
+      document.getElementById('one').innerText = "Email Address"
+document.getElementById('two').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/sa/flat/32.png"
+document.getElementById("an").style.display = 'block'
+document.getElementById("le").innerText = "AR"   
+}else if(localStorage.getItem('language') == 'bangla'){
+  document.getElementById('one').innerText = "Email Address"
+document.getElementById('two').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/bd/flat/32.png"
+document.getElementById("bg").style.display = "block"
+document.getElementById("le").innerText = "BN"   
+    }
+
+
+
+
+
+  document.getElementById('b').addEventListener('click', function() {
+    document.getElementById('lang').style.display = 'none';
+  })
+      document.getElementById("en").addEventListener('click', function(){
+      localStorage.setItem('language', 'english');
+     /*1*/ document.getElementById("eg").style.display = 'block'
+       /*2*/document.getElementById("cn").style.display = 'none'
+       /*3*/document.getElementById("hn").style.display = 'none'
+       /*4*/document.getElementById("sn").style.display = 'none'
+       /*5*/document.getElementById("fn").style.display = 'none'
+       /*6*/document.getElementById("an").style.display = 'none'
+       /*7*/document.getElementById("bg").style.display = 'none'
+   
+    
+    
+    
+    
+    
+    })
+    document.getElementById("ch").addEventListener('click', function(){
+      localStorage.setItem('language', 'chinese');
+     /*1*/  document.getElementById("cn").style.display = 'block'
+    /*2*/   document.getElementById("eg").style.display = 'none'
+      /*3*/document.getElementById("hn").style.display = 'none'
+     /*4*/ document.getElementById("sn").style.display = 'none'
+      /*5*/ document.getElementById("fn").style.display = 'none'
+     /*6*/ document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+   
+    })
+      document.getElementById("hi").addEventListener('click', function(){
+      localStorage.setItem('language', 'hindi');
+      /*1*/document.getElementById("hn").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+
+      /*4*/document.getElementById("sn").style.display = 'none'
+      /*5*/document.getElementById("fn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+    })
+      document.getElementById("sp").addEventListener('click', function(){
+      localStorage.setItem('language', 'spanish');
+      /*1*/document.getElementById("sn").style.display = 'block'
+      /*2*/document.getElementById("hn").style.display = 'none'
+      /*3*/document.getElementById("cn").style.display = 'none'
+      /*4*/document.getElementById("eg").style.display = 'none'
+
+     /*5*/document.getElementById("fn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+    })
+
+    document.getElementById("fr").addEventListener('click', function(){
+      localStorage.setItem('language', 'french');
+      /*1*/document.getElementById("fn").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+     /*7*/ document.getElementById("bg").style.display = 'none'
+   
+    })
+
+    document.getElementById("ar").addEventListener('click', function(){
+      localStorage.setItem('language', 'arabic');
+      /*1*/document.getElementById("an").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("fn").style.display = 'none'
+       /*7*/ document.getElementById("bg").style.display = 'none'
+   
+    })
+
+    document.getElementById("bn").addEventListener('click', function(){
+      localStorage.setItem('language', 'bangla');
+      
+     /*7*/ document.getElementById("bg").style.display = "block"
+     /*1*/document.getElementById("an").style.display = 'none'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("fn").style.display = 'none'
+       
+    })
+
+  document.getElementById('s').addEventListener('click', function(){
+document.getElementById('lang').style.display = 'block'
+  })
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
