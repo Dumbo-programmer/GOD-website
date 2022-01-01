@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="v4_91">
+          <div class="v4_92"></div>
+        <input type="button" id="submit" class="v4_93">
+        <span class="v4_94">Register</span>
+        <input type="text" id="name" class="v4_95">
+        <span class="v4_96" id="one">Name</span>
+        <span class="v4_97">Welcome G.O.D</span>
+        <span class="v4_98">Thank you for trusting G.O.D. with your burdens.
+    Our goal is to be your saver. G.O.D. would like
+    to assist you with your financial burdens. Please
+    take a moment to place your burdens today.</span>
+    <input type="text" id="company" class="v4_99">
+    <span class="v4_100" id="two">Company Name</span>
+    <input type="text" id="ein" class="v4_101">
+    <span class="v4_102" id="three">EIN</span>
+    <input type="text" id="ssn" class="v4_103">
+    <span class="v4_104" id="four">SSN</span>
+    <input type="text" id="address" class="v4_105">
+    <span class="v4_106" id="five">Address</span>
+    <input type="text" id="phone" class="v4_130">
+    <span class="v4_131" id="six">Cell Phone</span>
+    
+    <input type="text" id="email" name="email" class="v4_132">
+    <span class="v4_133" id="seven">Email address</span>
+    <input type="text" id="baddress" class="v4_134">
+    <span class="v4_135" id="eight">Business address</span>
+    <input type="text" id='date' class="v4_136">
+    <span class="v4_137" id="nine">Date of birth</span>
+    <!--pass,might remove it-->
+    <!-- <div class="v4_140"></div><span class="v303_3">Password</span>
+   End-->
+    <span class="v4_107">Already Have an account?<a href="client-login.html" style="color: rgba(245, 179, 35, 0.877);"> Login Now</a></span>
+    <img src="../AnyConv.com__GOD_LOGO-removebg-preview.png" class="v4_108">
+    <span class="v4_109">Place Your Burdens</span><span class="v4_138">I have agree to terms & conditions</span><input type="checkbox" class="v4_139" style="border: none;outline: none;color: rgb(210, 130, 10);">
+
+  
+</div> 
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+firebase.initializeApp(firebaseConfig);
+
+document.getElementById("submit").addEventListener('click', function() {
+///vars
+const name = document.getElementById("name").value;
+const company = document.getElementById("company").value;
+const ein = document.getElementById("ein").value;
+const ssn = document.getElementById("ssn").value;
+const address = document.getElementById("address").value;
+const phone = document.getElementById("phone").value;
+localStorage.setItem('phone', phone)
+const baddress = document.getElementById("baddress").value;
+const date = document.getElementById("date").value;
+
+const email = document.getElementById("email").value;
+const password = "123456";
+//firebase auth
+firebase.auth().createUserWithEmailAndPassword(email, password)
+
+
+.then((userCredential) => {
+  // Signed in 
+  var user = userCredential.user;
+  // replace 
+   localStorage.setItem("ID", email);
+   setTimeout( function(){
+ window.location.replace("confirm.html");
+
+   }, 4000)
+   setTimeout( function() {
+    firebase.firestore().collection("client").doc(email).add({
+   Name: name,
+   Email: email,
+   Phone: phone,
+   Date_Of_Birth: date,
+   SSN: ssn,
+   Address: address,
+   Company: company,
+   EIN: ein,
+   Business_Address: baddress
+ }).catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+    console.log(errorCode + ': ' + errorMessage);
+    alert("Error"+errorMessage +"code"+ errorCode)
+   });
+console.log("initiated");
+  }, 3000)
+  localStorage.setItem("ID", email);
+})
+})
+
+setTimeout( function() {
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    var uid = user.uid;
+    alert("signed in")
+    window.location.replace("Dashboard.html");
+  
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+})
+})
+document.getElementById('name').addEventListener('click', () => {
+  document.getElementById('one').style.top = '343px'
+})
+
+document.getElementById('company').addEventListener('click', () => {
+  document.getElementById('two').style.top = '420px'
+})
+
+document.getElementById('ein').addEventListener('click', () => {
+  document.getElementById('three').style.top = '490px'
+})
+document.getElementById('ssn').addEventListener('click', () => {
+  document.getElementById('four').style.top = '567px'
+})
+document.getElementById('address').addEventListener('click', () => {
+  document.getElementById('five').style.top = '643px'
+})
+document.getElementById('phone').addEventListener('click', () => {
+  document.getElementById('six').style.top = '716px'
+})
+document.getElementById('email').addEventListener('click', () => {
+  document.getElementById('seven').style.top = '792px'
+})
+document.getElementById('baddress').addEventListener('click', () => {
+  document.getElementById('eight').style.top = '868px'
+})
+document.getElementById('date').addEventListener('click', () => {
+  document.getElementById('nine').style.top = '941px'
+})
+</script>
+<style>
+  body{
+    background-size: 190rem;
+    background-repeat: no-repeat;
+    background-image: url(../2021.png);
+  }
+  @media screen and (min-width: 1080px) {
+    .v4_91{
+      left: 24% !important;
+    }
+  }
+  @media screen and (min-width: 720px) {
+    .v4_91{
+      left: 22% !important;
+    }
+    input{
+     width: 35% !important;
+    }
+  }
+    @media screen and (min-width: 680px) {
+    .v4_91{
+      left: 10% !important;
+  }
+  input{
+     width: 15% !important;
+    }
+    input[type=checkbox]
+  {
+    left: -20rem;
+    right: 20%;
+  }
+  .v4_94{
+   left: 7% !important;
+  }
+  .v4_98{
+    left: 5% !important;
+  }
+  .v4_108{
+    left:7% !important;
+  }
+  .v4_109{
+    left:7% !important;
+  }
+  .v4_97{
+    left:7% !important;
+  }
+}
+
+
+  input{
+    outline: none;
+    border: none;
+  }
+  * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  height: 100rem;
+overflow-x: hidden; 
+}
+.v4_91 {
+  width: 300rem;
+  height: 110rem;
+  background-repeat: no-repeat;
+  background-size: 300rem;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  overflow-y: hidden; 
+overflow-x: hidden;
+  left: 0px;
+  
+}
+.v4_92 {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden; 
+overflow-x: hidden; 
+  opacity: 1;
+  position: absolute;
+  top: 21px;
+  left: 17px;
+ 
+}
+.v4_93 {
+  width: 360px;
+  height: 60px;
+  background: linear-gradient(rgba(218,182,93,1), rgba(202,157,60,1));
+  opacity: 1;
+  position: absolute;
+  top: 1066px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_94 {
+  width: 76px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 1083px;
+  left: 148px;
+  font-family: Abhaya Libre;
+  font-weight: Bold;
+  font-size: 22px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_95 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 353px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_96 {
+  width: 39px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 375px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_97 {
+
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 207px;
+  left: 126px;
+  font-family: Abhaya Libre Medium;
+  font-weight: Regular;
+  font-size: 22px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_98 {
+  width: 331px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 258px;
+  left: 40px;
+  font-family: Actor;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+.v4_99 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 427px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_100 {
+  width: 105px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 448px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_101 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 501px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_102 {
+  width: 25px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 523px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_103 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 575px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_104 {
+  width: 28px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 596px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_105 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 649px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_106 {
+  width: 56px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 670px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_130 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 723px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_131 {
+  width: 72px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 744px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_132 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 797px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_133 {
+  width: 95px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 819px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_134 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 871px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_135 {
+  width: 115px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 892px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_136 {
+  width: 360px;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 945px;
+  left: 27px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_137 {
+  width: 86px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 966px;
+  left: 48px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_107 {
+  width: 247px;
+  
+  position: absolute;
+  top: 1161px;
+  left: 68px;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_108 {
+  width: 174px;
+  height: 121px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 30px;
+  left: 120px;
+  overflow: hidden;
+ 
+  animation: rotation 3s infinite linear; 
+}
+
+@keyframes rotation {
+  100%{ transform:rotatey(360deg) }
+}
+.v4_109 {
+  
+  color: rgba(205,162,66,1);
+  position: absolute;
+  top: 158px;
+  left: 126px;
+  font-family: Abhaya Libre;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+}
+.v4_138 {
+  width: 225px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1024px;
+  left: 73px;
+  font-family: Abhaya Libre ExtraBold;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_139 {
+  width: 22px;
+  height: 22px;
+  background: rgba(239,239,239,1);
+  opacity: 1;
+  position: absolute;
+  top: 1022px;
+  left: 35px;
+}
+.v4_140 {
+  width: 13px;
+  height: 7px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 1028px;
+  left: 51px;
+}
+
+
+
+
+</style>
+</body>
+</html>

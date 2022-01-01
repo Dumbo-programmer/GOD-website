@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+      
+    <title>Document</title>
+</head>
+<body>
+  <audio src="../WhatsApp Audio 2021-05-17 at 8.12.43 AM (1).aac" autoplay muted loop type="audio/aac" id="mp3"></audio>
+ 
+
+        <input id="submit" type="button" class="v4_81">
+        
+        <span class="v4_82">Login</span>
+        <input type="text" id="email" class="v4_83">
+        <span class="v4_84" id="one">Email address</span>
+        <span class="v4_85">Sign In</span>
+        <input type="text" id="password" class="v4_86">
+        <span class="v4_87" id="two">Password</span>
+        <span class="v4_88">Don't Have an account?<a href="client-signin.html" style="color: rgba(205,162,66,1);">Register Now</a> </span>
+        <input type="image" id="lang" src="../AnyConv.com__GOD_LOGO-removebg-preview.png" class="v4_89"><span class="v4_90">Place Your Burdens</span>
+        <div class="v38_83"><input type="image" src="../eng-removebg-preview.png" class="v38_85">
+      </div>
+        <span class="v38_87">EN</span>
+
+
+<p id="err"></p>
+<script>
+  document.getElementById('mp3').play();
+  const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+document.getElementById("submit").addEventListener("click", function(){
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    alert("logged in.Redirecting")
+    window.location.replace("Dashboard.html");
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    document.getElementById("err").innerText = errorCode + errorMessage;
+    alert("Oops something went wrong! Error Message:" + errorMessage)
+  });
+})
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    var uid = user.uid;
+    alert("Logged in")
+    window.location.replace("Dashboard.html");
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+////////////////////////////////////////////////////////////////////////////////////////////////
+document.getElementById('email').addEventListener('click', () => {
+  document.getElementById('one').style.top = '343px'
+})
+document.getElementById('password').addEventListener('click', () => {
+  document.getElementById('two').style.top = '423px'
+})
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+    body{
+    background-size: 190rem;
+    background-repeat: no-repeat;
+    background-image: url(../2021.png);
+  }
+ /*
+ @media screen and (min-width: 1080px) {
+#main{
+left: 50%;
+display: block;
+width: 100%;
+height: 100%;
+}
+
+#email{
+  left: 25%;
+display: block;
+width: 37% !important;
+}
+#one{
+  left: 45%;
+display: block;
+}
+#password{
+  left: 25%;
+display: block;
+width: 37% !important;
+}
+#two{
+  left: 45%;
+display: block;
+}
+.v4_90{
+  left: 55% !important;
+display: block;
+}
+.v4_82{
+  left: 67% !important;
+display: block !important;
+}
+.v4_85{
+  left: 59% !important;
+display: block !important;
+}
+.v4_88{
+  left: 59% !important;
+display: block !important;
+}
+.v38_83{
+  left: 79% !important;
+display: block !important;
+}
+.v38_87{
+  left: 71% !important;
+display: block !important;
+}
+#submit{
+  left: 35%;
+display: block;
+width: 37% !important;
+}
+#lang{
+  left: 55% !important;
+display: block !important;
+
+}
+ }
+ @media screen and (min-width: 1030px) {
+#main{
+left: 50%;
+display: block;
+width: 100%;
+height: 100%;
+}
+
+#email{
+  left: 25%;
+display: block;
+}
+#one{
+  left: 40%;
+display: block;
+}
+#password{
+  left: 25%;
+display: block;
+}
+
+ 
+*/
+ input{
+    border: none;
+    outline: none;
+  }
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v4_79 {
+  width: 250rem;
+  height: 100rem;
+  
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v4_80 {
+  width: 1000rem;
+  height: 1000rem;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v4_81 {
+  width: 49%;
+  height: 60px;
+  background: linear-gradient(rgba(218,182,93,1), rgba(202,157,60,1));
+  opacity: 1;
+  position: absolute;
+  top: 519px;
+  left: 17%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_82 {
+  width: 61px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 536px;
+  left: 35%;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 22px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_83 {
+  width: 49%;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 353px;
+  left: 17%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_84 {
+  width: 105px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 375px;
+  left: 30%;
+  font-family: SF UI Text;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_85 {
+  width: 73px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 296px;
+  left: 37%;
+  font-family: SF UI Text;
+  font-weight: Medium;
+  font-size: 22px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_86 {
+  width: 49%;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 427px;
+  left: 17%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v4_87 {
+  width: 73px;
+  color: rgba(116,116,116,1);
+  position: absolute;
+  top: 448px;
+  left: 30%;
+  font-family: SF UI Text;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_88 {
+  width: 52%;
+ 
+  position: absolute;
+  top: 593px;
+  left: 17%;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v4_89 {
+  width: 260px;
+  height: 180px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 50px;
+  left: 35%;
+  overflow: hidden;
+  animation: rotation 3s infinite linear; 
+}
+
+@keyframes rotation {
+  100%{ transform:rotatey(360deg) }
+}
+.v4_90 {
+  
+  color: rgba(205,162,66,1);
+  position: absolute;
+  top: 251px;
+  left: 35%;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+}
+.v38_83 {
+  width: 33px;
+  height: 33px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 44px;
+  left: 327px;
+  overflow: hidden;
+}
+.v38_84 {
+  width: 33px;
+  height: 33px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v38_85 {
+  padding-right: 1px;
+  height: 33px;
+ 
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: -4px;
+  border-radius: 50%;
+}
+.v38_86 {
+  width: 37px;
+  height: 38px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  overflow: hidden;
+}
+.v38_87 {
+ 
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 50px;
+  left: 365px;
+  font-family: SF UI Text;
+  font-weight: Semibold;
+  font-size: 18px;
+  opacity: 1;
+  text-align: left;
+}
+  
+</style>
+</body>
+</html>

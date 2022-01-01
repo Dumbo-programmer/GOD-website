@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet">
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-size=1.0">
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    </head>
+    <body>
+        <div class="v9_183">
+            <div class="v9_184"></div>
+            <div class="v9_185"></div>
+            <div class="v9_186"></div>
+            <span class="v9_187">Add Customer</span>
+            <div class="v9_188"></div>
+            <div class="">
+                <img class="v9_189" src="../2263539.png">
+                <div class="v9_191"></div>
+            </div>
+            <button id="submit" class="v9_245"></button>
+            <span class="v9_246">Add account</span>
+            <input type="text" id="issuer" class="v9_247">
+            <span id="one" class="v9_248">Issuer</span>
+            <input type="text" id="issueID" class="v9_249">
+            <span id="two" class="v9_250">Issuer account ID</span>
+            <input type="text" id="dateO" class="v9_251">
+            <span id="three" class="v9_252">Date of Origination</span>
+            <input type="text" id="dateC" class="v9_253">
+            <span id="four" class="v9_254">Date of Charged off</span>
+            <input type="text" id="dateP" class="v9_255">
+            <span id="five" class="v9_256">Date of Last Payment</span>
+            <input type="text" id="interest" class="v9_257">
+            <span id="six" class="v9_258">Original Interest Rate</span>
+            <input type="text" id="prin" class="v9_259">
+            <span id="seven" class="v9_260">Principal</span>
+            <input type="text" id="Cinterest" class="v9_262">
+            <span id="eight" class="v9_263">Current Interest Due</span>
+            <input type="text" id="bal" class="v9_264">
+            <span id="nine" class="v9_265">Balance</span>
+            <input type="text" id="name" class="v9_266">
+            <span id="ten" class="v9_267">Name (first, middle, last, suffix)</span>
+            <input type="text" id="ssn" class="v9_268">
+            <span id="eleven" class="v9_269">SSN</span>
+            <input type="text" id="date" class="v9_270">
+            <span id="twelve" class="v9_271">Date of Birth</span>
+            <input type="text" id="address" class="v9_272">
+            <span id="thirteen" class="v9_273">Address (City, State, Zip)</span>
+            <input type="text" id="phone" class="v9_274">
+            <span id="fourteen" class="v9_275">Phone Number</span>
+            <div class="v39_813"></div>
+            <a href="Dashboard.html">
+                <img src="../Home.png" class="v39_1145">
+            </a>
+            <a href="profile.html">
+                <img src="../Profile.png" class="v39_1148">
+            </a>
+            <a href="clients.html">
+                <img src="../Group 3.png" class="v39_1155">
+            </a>
+            <img src="../rating 1.png" class="v39_1162">
+            <a href="payments.html">
+                <img src="../income 1.png" class="v39_1172">
+            </a>
+        </div>
+        <script>
+                     const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+  document.getElementById("submit").addEventListener('click',function(){
+    if (localStorage.getItem('ID') !== null) {
+    console.log(`Email address exists`);
+     
+  const val = localStorage.getItem("ID")
+//vars of values
+const issuer = document.getElementById("issuer").value;
+const issueID = document.getElementById("issueID").value;
+const dateO = document.getElementById("dateO").value;
+const dateC = document.getElementById("dateC").value;
+const dateP = document.getElementById("dateP").value;
+const interest = document.getElementById("interest").value;
+const prin = document.getElementById("prin").value;
+const Cinterest = document.getElementById("Cinterest").value;
+const bal = document.getElementById("bal").value;
+const name = document.getElementById("name").value;
+const ssn = document.getElementById("ssn").value;
+const date = document.getElementById("date").value;
+const address = document.getElementById("address").value;
+const phone = document.getElementById("phone").value;
+//var ending
+//localstorage mess
+localStorage.setItem("issuer", issuer)
+//end
+firebase.firestore().collection('users').doc(val).set({
+    Issuer: issuer,
+    Issuer_account_ID: issueID,
+    Date_of_Origination: dateO,
+    Date_of_Charged_off: dateC,   
+    Date_of_Last_Payment: dateP,  
+    Original_Interest_Rate: interest,   
+    Principal: prin,
+    Current_Interest_Due: Cinterest,
+    Balance: bal,
+    Name: name,
+    SSN: ssn,
+    Date_of_birth: date,
+    Address: address,
+    phone: phone,
+    paused: false
+
+})
+} else {
+    console.log(`Email address not found`);
+    let foo = prompt('Email here');
+    let bar = confirm("confirm or deny");
+    
+     localStorage.setItem("ID", foo/*.value*/);
+    
+}
+  })
+
+
+  document.getElementById("issuer").addEventListener('click', function(){
+document.getElementById('one').style.top = '155px'
+  })
+  document.getElementById("issueID").addEventListener('click', function(){
+document.getElementById('two').style.top = '232px'
+  })
+  document.getElementById("dateO").addEventListener('click', function(){
+document.getElementById('three').style.top = '303px'
+  })
+  document.getElementById("dateC").addEventListener('click', function(){
+document.getElementById('four').style.top = '380px'
+  })
+  document.getElementById("dateP").addEventListener('click', function(){
+document.getElementById('five').style.top = '450px'
+  })
+  document.getElementById("interest").addEventListener('click', function(){
+document.getElementById('six').style.top = '526px'
+  })
+  document.getElementById("prin").addEventListener('click', function(){
+document.getElementById('seven').style.top = '600px'
+  })
+  document.getElementById("Cinterest").addEventListener('click', function(){
+document.getElementById('eight').style.top = '672px'
+  })
+  document.getElementById("bal").addEventListener('click', function(){
+document.getElementById('nine').style.top = '750px'
+  })
+  document.getElementById("prin").addEventListener('click', function(){
+document.getElementById('seven').style.top = '600px'
+  })
+  document.getElementById("name").addEventListener('click', function(){
+document.getElementById('ten').style.top = '820px'
+  })
+  document.getElementById("ssn").addEventListener('click', function(){
+document.getElementById('eleven').style.top = '896px'
+  })
+  document.getElementById("date").addEventListener('click', function(){
+document.getElementById('twelve').style.top = '970px'
+  })
+  document.getElementById("address").addEventListener('click', function(){
+document.getElementById('thirteen').style.top = '1040px'
+  })
+  document.getElementById("phone").addEventListener('click', function(){
+document.getElementById('fourteen').style.top = '1113px'
+  })
+        </script>
+        <style>
+    .v39_1145 {
+  width: 29px;
+  height: 29px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 84rem;
+  left: 27px;
+  overflow: hidden;
+}
+.v39_1146 {
+  width: 28px;
+  height: 27px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_1147 {
+  width: 28px;
+  height: 27px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_1148 {
+  width: 23px;
+  height: 27px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 84rem;
+  left: 361px;
+  overflow: hidden;
+}
+.v39_1149 {
+  width: 23px;
+  height: 11px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_1150 {
+  width: 23px;
+  height: 11px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_1151 {
+  width: 23px;
+  height: 11px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_1152 {
+  width: 14px;
+  height: 14px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  overflow: hidden;
+}
+.v39_1153 {
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_1154 {
+  width: 14px;
+  height: 14px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_1155 {
+  width: 30px;
+  height: 26px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 84rem;
+  left: 109px;
+  overflow: hidden;
+}
+.v39_1156 {
+  width: 10px;
+  height: 10px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}
+.v39_1157 {
+  width: 6px;
+  height: 6px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 3px;
+  left: 22px;
+}
+.v39_1158 {
+  width: 6px;
+  height: 6px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+}
+.v39_1159 {
+  width: 8px;
+  height: 12px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 12px;
+  left: 0px;
+}
+.v39_1160 {
+  width: 16px;
+  height: 14px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 12px;
+  left: 7px;
+}
+.v39_1161 {
+  width: 8px;
+  height: 12px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 12px;
+  left: 22px;
+}
+.v39_1162 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 84rem;
+  left: 194px;
+  overflow: hidden;
+}
+.v39_1163 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+.v39_1164 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 17px;
+}
+.v39_1165 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.v39_1166 {
+  width: 7px;
+  height: 7px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+}
+.v39_1167 {
+  width: 11px;
+  height: 7px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 7px;
+}
+.v39_1168 {
+  width: 5px;
+  height: 4px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 20px;
+}
+.v39_1169 {
+  width: 6px;
+  height: 6px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 18px;
+}
+.v39_1170 {
+  width: 6px;
+  height: 6px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 2px;
+}
+.v39_1171 {
+  width: 5px;
+  height: 4px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 1px;
+}
+.v39_1172 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 84rem;
+  left: 276px;
+  overflow: hidden;
+}
+    input{
+      border: none;
+      outline: none;
+    }
+    button{
+      border: none;
+      outline: none;
+    }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+  }
+  .v9_183 {
+    width: 100%;
+    height: 1407px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v9_184 {
+    width: 414px;
+    height: 100%;
+    width: 900rem;
+  height: 900rem;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 20%;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v9_185 {
+    width: 100%;
+    height: 207px;
+    background: rgba(0,0,0,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v9_186 {
+    width: 100%;
+    height: 135px;
+  
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 140rem;
+    opacity: 1;
+    position: absolute;
+    top: 124px;
+    left: 0px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+  }
+  .v9_187 {
+    width: 173px;
+    color: rgba(210,170,77,1);
+    position: absolute;
+    top: 69px;
+    left: 121px;
+    font-family: SF UI Text;
+    font-weight: Bold;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .v9_188 {
+    width: 44px;
+    height: 44px;
+    background: rgba(196,196,196,1);
+    opacity: 1;
+    position: absolute;
+    top: 62px;
+    left: 348px;
+    border-radius: 50%;
+  }
+  .v9_189 {
+    width: 44px;
+    height: 44px;
+    background: url("../images/v9_189.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 62px;
+    left: 348px;
+    overflow: hidden;
+  }
+  .v9_190 {
+    width: 44px;
+    height: 44px;
+    background: rgba(196,196,196,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+  }
+  .v9_191 {
+    width: 54px;
+    height: 54px;
+    background: url("../images/v9_191.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    overflow: hidden;
+  }
+  .v9_245 {
+    width: 360px;
+    height: 60px;
+    background: linear-gradient(rgba(218,182,93,1), rgba(202,157,60,1));
+    opacity: 1;
+    position: absolute;
+    top: 1214px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_246 {
+    width: 140px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 1231px;
+    left: 137px;
+    font-family: SF UI Text;
+    font-weight: Bold;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_247 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 160px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_248 {
+    width: 46px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 182px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_249 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 234px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_250 {
+    width: 132px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 255px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_251 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 308px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_252 {
+    width: 143px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 330px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_253 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 382px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_254 {
+    width: 150px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 403px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_255 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 456px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_256 {
+    width: 162px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 477px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_257 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 530px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_258 {
+    width: 160px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 551px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_259 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 604px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_260 {
+    width: 66px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 625px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_262 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 678px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_263 {
+    width: 154px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 699px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_264 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 752px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_265 {
+    width: 60px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 773px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_266 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 826px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_267 {
+    width: 237px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 847px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_268 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 900px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_269 {
+    width: 33px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 921px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_270 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 974px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_271 {
+    width: 96px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 995px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_272 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 1048px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_273 {
+    width: 189px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 1069px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v9_274 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 1122px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .v9_275 {
+    width: 113px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 1143px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v39_813 {
+    width: 100%;
+    height: 86px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 1321px;
+    left: 0px;
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+    overflow: hidden;
+  }
+  .v39_814 {
+    width: 29px;
+    height: 29px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 1338px;
+    left: 38px;
+    overflow: hidden;
+  }
+  .v39_815 {
+    width: 28px;
+    height: 27px;
+    background: url("../images/v39_815.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v39_816 {
+    width: 28px;
+    height: 27px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .v39_817 {
+    width: 23px;
+    height: 27px;
+    background: url("../images/v39_817.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1339px;
+    left: 351px;
+    overflow: hidden;
+  }
+  .v39_818 {
+    width: 23px;
+    height: 11px;
+    background: url("../images/v39_818.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v39_819 {
+    width: 23px;
+    height: 11px;
+    background: url("../images/v39_819.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v39_820 {
+    width: 23px;
+    height: 11px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .v39_821 {
+    width: 14px;
+    height: 14px;
+    background: url("../images/v39_821.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    overflow: hidden;
+  }
+  .v39_822 {
+    width: 14px;
+    height: 14px;
+    background: url("../images/v39_822.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v39_823 {
+    width: 14px;
+    height: 14px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .v39_824 {
+    width: 27px;
+    height: 27px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 1339px;
+    left: 142px;
+    overflow: hidden;
+  }
+  .v39_825 {
+    width: 9px;
+    height: 9px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 8px;
+  }
+  .v39_826 {
+    width: 9px;
+    height: 9px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 17px;
+  }
+  .v39_827 {
+    width: 9px;
+    height: 9px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+  }
+  .v39_828 {
+    width: 7px;
+    height: 7px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 11px;
+    left: 9px;
+  }
+  .v39_829 {
+    width: 11px;
+    height: 7px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 19px;
+    left: 7px;
+  }
+  .v39_830 {
+    width: 5px;
+    height: 4px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+  }
+  .v39_831 {
+    width: 6px;
+    height: 6px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 18px;
+  }
+  .v39_832 {
+    width: 6px;
+    height: 6px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 2px;
+  }
+  .v39_833 {
+    width: 5px;
+    height: 4px;
+    background: rgba(210,170,77,1);
+    opacity: 1;
+    position: absolute;
+    top: 22px;
+    left: 1px;
+  }
+  .v39_834 {
+    width: 27px;
+    height: 27px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 1339px;
+    left: 246px;
+    overflow: hidden;
+  }
+  .v39_835 {
+    width: 26px;
+    height: 26px;
+    background: url("../images/v39_835.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v39_836 {
+    width: 13px;
+    height: 13px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 9px;
+  }
+  .v39_837 {
+    width: 8px;
+    height: 10px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 16px;
+    left: 0px;
+  }
+  .v39_838 {
+    width: 19px;
+    height: 8px;
+    background: rgba(234,223,198,1);
+    opacity: 1;
+    position: absolute;
+    top: 14px;
+    left: 6px;
+  }
+        </style>
+    </body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-size=1.0">
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="v33_262">
+            <div class="v33_263"></div>
+            <div class="v33_264"></div>
+            <div class="v33_265"></div>
+            <span class="v33_266">Upload</span>
+            <div class="v33_267"><img class="v33_268" src="../2263539.png">
+           </div>
+            
+        </div>
+        <div class="v33_271"></div>
+        <div class="v33_272"></div>
+        <span class="v33_273">Upload excel sheet</span>
+        <div class="v33_324" id="spreadsheet">
+            <input
+                id="files"
+                type="file"
+                multiple
+                accept=".xls,.xlsx"
+                style="width: 100%;height: 100%;opacity: 0;"
+            >
+        </div>
+        <div class="v33_325">
+            <div class="v33_326"></div>
+            <div class="v33_327"></div>
+        </div>
+        <span class="v33_343">Select File</span>
+        <button id="send" class="v33_344">Upload</button>
+           <div class="v39_839"></div>
+        <div class="v39_762">
+
+          <a href="Dashboard.html"><img src="../Home.png" class="v39_763"></a> 
+           </div>
+           <a href="message.html"> <img src="../chat (3) 1.png" class="ew"></a>
+          <a href="payment.html"> <img class="eww" src="../income 1.png"></a>
+          <a href="myacc.html"><img src="../Profile.png" class="v39_765"></a> 
+           
+            
+            <a href="customer.html"> <img src="../rating 1.png" class="v39_772"></a>
+    
+                  
+            
+            <p id="uploading"></p>
+                    <progress id="progress"></progress>       
+    </div>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+  const db = firebase.firestore()
+  let selectedFile;
+
+ 
+
+ const namee =  localStorage.getItem('name')  
+ const val = localStorage.getItem("ID")
+  
+
+
+let issuer;
+let issueID;
+let dateO;
+let dateC;
+let dateP;
+let interest;
+let address;
+let prin;
+let date;
+let phone;
+let Cinterest;
+let name;
+let ssn;
+let bal;
+
+let data=[{
+    "name":"placement",
+    "data":"worksheet",
+    "abc":"GOD"
+}]
+
+
+document.getElementById('files').addEventListener("change", () => {
+    XLSX.utils.json_to_sheet(data, 'Godplacement.xlsx');
+    if(selectedFile){
+        let fileReader = new FileReader();
+        fileReader.readAsBinaryString(selectedFile);
+        fileReader.onload = (event)=>{
+
+         let data = event.target.result;
+
+        
+         let workbook = XLSX.read(data,{type:"binary"});
+         console.log(workbook);
+         workbook.SheetNames.forEach(sheet => {
+              let rowObject = XLSX.utils.sheet_to_json(workbook.Sheets[sheet]);
+              console.log(rowObject);
+              let phone = rowObject[0]['Phone Number (Home, Work, Cell)']
+              let prin = rowObject[0]['Principal']
+              let ssn = rowObject[0]['SSN']
+               let issueID = rowObject[0]['Issuer account ID']
+              let bal = rowObject[0]['Balance']
+              let date = rowObject[0]['Date of Birth']
+             let issuer = rowObject[0]['Issuer']
+         let Cinterest = rowObject[0]['Current Interest Due']
+         let interest = rowObject[0]['Original Interest Rate']
+         let dateC = rowObject[0]['Date of Charged off']     
+         let dateP = rowObject[0]['Date of Last Payment']
+         let dateO = rowObject[0]['Date of Origination']
+         let name = rowObject[0]['Name (first, middle, last, suffix)']
+         console.log(phone);
+         
+            });
+        }
+    }
+});
+//extras
+var files = [];
+document.getElementById("files").addEventListener("change", function(e) {
+  files = e.target.files;
+  for (let i = 0; i < files.length; i++) {
+    console.log(files[i]);
+  }
+});
+
+document.getElementById('files').addEventListener("change", (event) => {
+    selectedFile = event.target.files[0];
+  
+
+   db.collection('Added Accounts').doc(issuer).set({
+  Issuer: issuer,
+    Issuer_account_ID: issueID,
+    Date_of_Origination: dateO,
+    Date_of_Charged_off: dateC,   
+    Date_of_Last_Payment: dateP,  
+    Original_Interest_Rate: interest,   
+    Principal: prin,
+    Current_Interest_Due: Cinterest,
+    Balance: bal,
+    Name: name,
+    SSN: ssn,
+    Date_of_birth: date,
+    Address: address,
+    phone: phone,
+    place: val,
+    myn: namee,
+    paused: false
+}).catch(error => {
+//console.log("Error:::::"+error);
+document.getElementById('uploading').innerText = "Uploading error!" + error
+
+})
+
+})
+
+
+document.getElementById('send').addEventListener("click", function(){
+document.getElementById('progress').style.display = "block";
+
+setTimeout(function(){
+  document.getElementById('progress').style.display = "none";
+  document.getElementById('uploading').innerText = "Uploaded"
+
+}, 3000)
+})
+    </script>
+    <style>
+      #ii{
+        position: absolute;
+        left: 12%;
+      }
+      button{
+        color: white;
+      }
+        #uploading{
+    position: absolute;
+    top: 367px;
+    left: 145px;
+    height: 16px;
+    width: 115px;
+}
+  #progress{
+    position: absolute;
+    top: 357px;
+    left: 145px;
+    height: 16px;
+    width: 115px;
+display: none;
+  }
+       .v39_752 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 246px;
+ 
+  overflow: hidden;
+}
+.v39_753 {
+  width: 26px;
+  height: 26px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_754 {
+  width: 13px;
+  height: 13px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 9px;
+}
+.v39_755 {
+  width: 8px;
+  height: 10px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+}
+.v39_756 {
+  width: 19px;
+  height: 8px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 14px;
+  left: 6px;
+}
+.v39_761 {
+  width: 414px;
+  height: 86px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 810px;
+  left: 0px;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+  overflow: hidden;
+}
+.v39_762 {
+  width: 29px;
+  height: 29px;
+   opacity: 1;
+  position: absolute;
+  top: 827px;
+  left: 7%;
+  overflow: hidden;
+}
+.v39_763 {
+  width: 28px;
+  height: 27px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_764 {
+  width: 28px;
+  height: 27px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_765 {
+  width: 23px;
+  height: 27px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 83%;
+  overflow: hidden;
+}
+.v39_766 {
+  width: 23px;
+  height: 11px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_767 {
+  width: 23px;
+  height: 11px;
+  background: url("../images/v39_767.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_768 {
+  width: 23px;
+  height: 11px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_769 {
+  width: 14px;
+  height: 14px;
+  background: url("../images/v39_769.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  overflow: hidden;
+}
+.v39_770 {
+  width: 14px;
+  height: 14px;
+  background: url("../images/v39_770.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_771 {
+  width: 14px;
+  height: 14px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_772 {
+  width: 27px;
+  height: 27px;
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 28%;
+  overflow: hidden;
+}
+.eww{
+  width: 27px;
+  height: 27px;
+   opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 47%;
+  overflow: hidden;
+}
+
+.ew{
+    width: 27px;
+  height: 27px;
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 64%;
+  overflow: hidden;
+}
+
+
+  button{
+    outline: none;
+    border: none;
+  }
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v33_262 {
+  width: 100%;
+  height: 896px;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v33_263 {
+  width: 414px;
+  height: 896px;
+  width: 1300rem;
+ 
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 10%;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v33_264 {
+  width: 100%;
+  height: 207px;
+  background: rgba(0,0,0,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v33_265 {
+  width: 100%;
+  height: 135px;
+  
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 150rem;
+  opacity: 1;
+  position: absolute;
+  top: 124px;
+  left: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+.v33_266 {
+  width: 86px;
+  color: rgba(210,170,77,1);
+  position: absolute;
+  top: 69px;
+  left: 36%;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: center;
+}
+.v33_267 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: absolute;
+  top: 62px;
+  left: 77%;
+  border-radius: 50%;
+}
+.v33_268 {
+  width: 44px;
+  height: 44px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+.v33_269 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v33_270 {
+  width: 54px;
+  height: 54px;
+  background: url("../images/v33_270.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  overflow: hidden;
+}
+.v33_271 {
+  width: 82%;
+  height: 545px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 136px;
+  left: 12px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.05000000074505806);
+  overflow: hidden;
+}
+.v33_272 {
+  width: 82%;
+  height: 46px;
+  background: rgba(255,249,238,1);
+  opacity: 1;
+  position: absolute;
+  top: 136px;
+  left: 12px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+.v33_273 {
+  width: 153px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 148px;
+  left: 27%;
+  font-family: Poppins;
+  font-weight: Medium;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v33_324 {
+  width: 76%;
+  height: 146px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 208px;
+  left: 26px;
+  border: 1px solid rgba(198,198,198,1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v33_325 {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 243px;
+  left: 39%;
+  overflow: hidden;
+}
+.v33_326 {
+  width: 37px;
+  height: 48px;
+  background: rgba(41,204,94,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+}
+.v33_327 {
+  width: 25px;
+  height: 21px;
+  background: rgba(184,200,217,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 11px;
+}
+.v33_343 {
+  width: 69px;
+  color: rgba(121,121,121,1);
+  position: absolute;
+  top: 303px;
+  left: 38%;
+  font-family: Poppins;
+  font-weight: Medium;
+  font-size: 14px;
+  opacity: 1;
+  text-align: left;
+}
+.v33_344 {
+  width: 75%;
+  height: 60px;
+  background: linear-gradient(rgba(218,182,93,1), rgba(202,157,60,1));
+  opacity: 1;
+  position: absolute;
+  top: 398px;
+  left: 26px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v33_345 {
+  width: 79px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 415px;
+  left: 167px;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 22px;
+  opacity: 1;
+  text-align: left;
+}
+.v39_839 {
+  width: 100%;
+  height: 186px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 810px;
+  left: 0px;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+  overflow: hidden;
+}
+.v39_840 {
+  width: 29px;
+  height: 29px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 827px;
+  left: 38px;
+  overflow: hidden;
+}
+.v39_841 {
+  width: 28px;
+  height: 27px;
+  background: url("../images/v39_841.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_842 {
+  width: 28px;
+  height: 27px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_843 {
+  width: 23px;
+  height: 27px;
+  background: url("../images/v39_843.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 351px;
+  overflow: hidden;
+}
+.v39_844 {
+  width: 23px;
+  height: 11px;
+  background: url("../images/v39_844.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_845 {
+  width: 23px;
+  height: 11px;
+  background: url("../images/v39_845.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_846 {
+  width: 23px;
+  height: 11px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_847 {
+  width: 14px;
+  height: 14px;
+  background: url("../images/v39_847.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  overflow: hidden;
+}
+.v39_848 {
+  width: 14px;
+  height: 14px;
+  background: url("../images/v39_848.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_849 {
+  width: 14px;
+  height: 14px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v39_850 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 142px;
+  overflow: hidden;
+}
+.v39_851 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+.v39_852 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 17px;
+}
+.v39_853 {
+  width: 9px;
+  height: 9px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.v39_854 {
+  width: 7px;
+  height: 7px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+}
+.v39_855 {
+  width: 11px;
+  height: 7px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 7px;
+}
+.v39_856 {
+  width: 5px;
+  height: 4px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 20px;
+}
+.v39_857 {
+  width: 6px;
+  height: 6px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 18px;
+}
+.v39_858 {
+  width: 6px;
+  height: 6px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 2px;
+}
+.v39_859 {
+  width: 5px;
+  height: 4px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 1px;
+}
+.v39_860 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 246px;
+  overflow: hidden;
+}
+.v39_861 {
+  width: 26px;
+  height: 26px;
+  background: url("../images/v39_861.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v39_862 {
+  width: 13px;
+  height: 13px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 9px;
+}
+.v39_863 {
+  width: 8px;
+  height: 10px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+}
+.v39_864 {
+  width: 19px;
+  height: 8px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 14px;
+  left: 6px;
+}
+    </style>
+</body>
+</html>

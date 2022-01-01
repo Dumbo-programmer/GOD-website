@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet" />
+     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+	 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+	
+    
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="v3_44">
+      <div class="v3_45"></div>
+      <button id="submit" type="button" class="v3_47" >Login</button>
+      <!--<span class="v3_48">Login</span>-->
+      <input type="text" id="email" class="v3_49">
+      <span class="v3_50" id="emltest">Email address</span>
+      <span class="v3_51">Sign In</span>
+      <input type="text" id="password" class="v3_52">
+      <span class="v3_53" id="pswrdtest">Password</span>
+      <span class="v3_54">Don't Have an account?<a href="./signup.html" style="color: rgba(205,162,66,1);">Register Now</a></span>
+      <input type="image"src='../AnyConv.com__GOD_LOGO-removebg-preview.png' class="v3_55">
+      <span class="v3_56">Visit Jesus-Today</span>
+      <input type="image"  id="s"src="../eng-removebg-preview.png" class="v38_78">
+      
+
+    <span class="v38_82" id="le">EN</span>
+    <div class="v38_384" id="lang" style="display: none;">
+      <div class="v38_385"></div>
+      <span class="v38_386">Select Language</span>
+      <input type="image" src="../Group 11.png" id="b" class="v38_387">
+      <button class="v38_390" id="en">English</button>
+      <img src="../Vector.png" class="eg" id="eg">
+   
+      <div class="name"></div>
+      <div class="v38_392"></div>
+      <button class="v38_396" id="ch">Chinese</button>
+      <img src="../Vector.png" class="cn" id="cn">
+     
+      <div class="name"></div>
+      <div class="v38_398"></div>
+      <button class="v38_402" id="hi">Hindi</button>
+      <img src="../Vector.png" class="hn" id="hn">
+     
+      <div class="name"></div>
+      <div class="v38_404"></div>
+      <button class="v38_408" id="sp">Spanish</button>
+      <img src="../Vector.png" class="sn" id="sn">
+     
+      <div class="name"></div>
+      <div class="v38_410">
+          <div class="v38_411"></div>
+          <div class="v38_412"></div>
+          <div class="v38_413"></div>
+      </div>
+      <button class="v38_414" id="fr">French</button>
+      <div class="name"></div>
+      <img src="../Vector.png" class="fn" id="fn">
+      <div class="v38_416">
+          <div class="v38_417"></div>
+          <div class="v38_418"></div>
+          <div class="v38_419"></div>
+      </div>
+      <button class="v38_420" id="ar">Arabic</button>
+      <img src="../Vector.png" class="an" id="an">
+      <div class="name"></div>
+      <div class="v38_422">
+          <div class="v38_423"></div>
+          <div class="v38_424"></div>
+          <div class="v38_425"></div>
+      </div>
+      <button class="v38_426" id="bn">Bangali</button>
+      <img src="../Vector.png" class="bg" id="bg">
+      <div class="v38_427">
+          <div class="v38_428"></div>
+          <div class="v38_429"></div>
+          <div class="v38_430"></div>
+      </div>
+  </div>
+</div>
+<p id="err"></p>
+<script>
+
+if(localStorage.getItem('language') == 'english'){
+document.getElementById('emltest').innerText = "Email Address"
+document.getElementById('pswrdtest').innerText = "Password"
+document.getElementById("s").src = "../eng.png"
+document.getElementById("eg").style.display = 'block'
+ document.getElementById("le").innerText = "EN"   
+}else if(localStorage.getItem('language') == 'chinese'){
+
+
+      document.getElementById('emltest').innerText = "電子郵件"
+document.getElementById('pswrdtest').innerText = "密碼"
+document.getElementById("s").src = "https://www.countryflags.io/cn/flat/32.png"
+document.getElementById("cn").style.display = 'block'
+document.getElementById("le").innerText = "CH"     
+}else if(localStorage.getItem('language') == 'hindi'){
+  document.getElementById('emltest').innerText = "ईमेल"
+document.getElementById('pswrdtest').innerText = "पासवर्ड"
+document.getElementById("le").innerText = "HN"   
+document.getElementById("s").src = "https://www.countryflags.io/in/flat/32.png"
+document.getElementById("hn").style.display = 'block'
+    
+}else if(localStorage.getItem('language') == 'spanish'){
+  document.getElementById('emltest').innerText = "Email Address"
+document.getElementById('pswrdtest').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/es/flat/32.png"
+document.getElementById("sn").style.display = 'block'
+document.getElementById("le").innerText = "SP"   
+}else if(localStorage.getItem('language') == 'french'){
+  document.getElementById('emltest').innerText = "Email Address"
+document.getElementById('pswrdtest').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/fr/flat/32.png"
+document.getElementById("fn").style.display = 'block'
+document.getElementById("le").innerText = "FR"   
+}
+
+    if(localStorage.getItem('language') == 'arabic'){
+      document.getElementById('emltest').innerText = "Email Address"
+document.getElementById('pswrdtest').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/sa/flat/32.png"
+document.getElementById("an").style.display = 'block'
+document.getElementById("le").innerText = "AR"   
+}else if(localStorage.getItem('language') == 'bangla'){
+  document.getElementById('emltest').innerText = "Email Address"
+document.getElementById('pswrdtest').innerText = "Password"
+document.getElementById("s").src = "https://www.countryflags.io/bd/flat/32.png"
+document.getElementById("bg").style.display = "block"
+document.getElementById("le").innerText = "BN"   
+    }
+
+
+
+
+
+  document.getElementById('b').addEventListener('click', function() {
+    document.getElementById('lang').style.display = 'none';
+  })
+      document.getElementById("en").addEventListener('click', function(){
+      localStorage.setItem('language', 'english');
+     /*1*/ document.getElementById("eg").style.display = 'block'
+       /*2*/document.getElementById("cn").style.display = 'none'
+       /*3*/document.getElementById("hn").style.display = 'none'
+       /*4*/document.getElementById("sn").style.display = 'none'
+       /*5*/document.getElementById("fn").style.display = 'none'
+       /*6*/document.getElementById("an").style.display = 'none'
+       /*7*/document.getElementById("bg").style.display = 'none'
+   
+    
+    
+    
+    
+    
+    })
+    document.getElementById("ch").addEventListener('click', function(){
+      localStorage.setItem('language', 'chinese');
+     /*1*/  document.getElementById("cn").style.display = 'block'
+    /*2*/   document.getElementById("eg").style.display = 'none'
+      /*3*/document.getElementById("hn").style.display = 'none'
+     /*4*/ document.getElementById("sn").style.display = 'none'
+      /*5*/ document.getElementById("fn").style.display = 'none'
+     /*6*/ document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+   
+    })
+      document.getElementById("hi").addEventListener('click', function(){
+      localStorage.setItem('language', 'hindi');
+      /*1*/document.getElementById("hn").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+
+      /*4*/document.getElementById("sn").style.display = 'none'
+      /*5*/document.getElementById("fn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+    })
+      document.getElementById("sp").addEventListener('click', function(){
+      localStorage.setItem('language', 'spanish');
+      /*1*/document.getElementById("sn").style.display = 'block'
+      /*2*/document.getElementById("hn").style.display = 'none'
+      /*3*/document.getElementById("cn").style.display = 'none'
+      /*4*/document.getElementById("eg").style.display = 'none'
+
+     /*5*/document.getElementById("fn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+      /*7*/document.getElementById("bg").style.display = 'none'
+    })
+
+    document.getElementById("fr").addEventListener('click', function(){
+      localStorage.setItem('language', 'french');
+      /*1*/document.getElementById("fn").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("an").style.display = 'none'
+     /*7*/ document.getElementById("bg").style.display = 'none'
+   
+    })
+
+    document.getElementById("ar").addEventListener('click', function(){
+      localStorage.setItem('language', 'arabic');
+      /*1*/document.getElementById("an").style.display = 'block'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("fn").style.display = 'none'
+       /*7*/ document.getElementById("bg").style.display = 'none'
+   
+    })
+
+    document.getElementById("bn").addEventListener('click', function(){
+      localStorage.setItem('language', 'bangla');
+      
+     /*7*/ document.getElementById("bg").style.display = "block"
+     /*1*/document.getElementById("an").style.display = 'none'
+      /*2*/document.getElementById("cn").style.display = 'none'
+      /*3*/document.getElementById("eg").style.display = 'none'
+     /*4*/document.getElementById("hn").style.display = 'none'
+      /*5*/document.getElementById("sn").style.display = 'none'
+      /*6*/document.getElementById("fn").style.display = 'none'
+       
+    })
+
+  document.getElementById('s').addEventListener('click', function(){
+document.getElementById('lang').style.display = 'block'
+  })
+  document.getElementById('email').addEventListener('input', function(){
+document.getElementById('emltest').style.top = '350px'
+  })
+  document.getElementById('password').addEventListener('input', function(){
+document.getElementById('pswrdtest').style.top = '420px'
+  })
+  const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+document.getElementById("submit").addEventListener("click", function(){
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    document.getElementById("err").innerText = errorCode + errorMessage;
+    alert("Error"+errorMessage +"code"+ errorCode)
+  });
+})
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    var uid = user.uid;
+    alert("logged in,Redirecting")
+   window.location.replace("Dashboard.html");
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+.v3_55{
+  width: 20% !important; 
+  left: 41% !important;
+}
+.v38_78{
+  width: 47px !important;
+    left: 12% !important;
+    top: 120px;
+    position: absolute;
+}
+#le{
+  width: 33px !important;
+    left: 9% !important;
+    position: absolute;
+    top: 125px;
+}
+input[type=text]{
+width: 61% !important;
+left: 25% !important;
+}
+button{
+  width: 61% !important;
+  color: white;
+  font-size: 16px;
+  font-family: SF UI Text;
+  left: 25% !important; 
+}
+.v3_51{
+  left: 44% !important;
+  width: 40% !important;
+}
+.v3_56{
+  left: 40% !important;
+  width: 44% !important;
+}
+#emltest{
+  left: 30% !important;
+}
+#pswrdtest{
+  left: 30% !important;
+}
+.v38_387{
+  width: 21px !important;
+}
+
+#sec1{
+position: absolute;
+width: 100%;
+height: 1px;
+color: black;
+top: 125px;
+overflow: hidden;
+}
+.tick1{
+top: 86px;
+position: absolute;
+left: 278px;
+}
+.tick2{
+top: 150px;
+position: absolute;
+left: 278px;
+}
+.tick3{
+top: 212px;
+position: absolute;
+left: 278px;
+}
+#sms{
+top: 143px;
+left: 49px;
+position: absolute;
+width: 110px;
+height: 30px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 16px;
+}
+
+#gmail{
+
+ top: 80px;
+left: 49px;
+position: absolute;
+width: 110px;
+height: 30px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 16px;  
+}
+#both{
+top: 205px;
+left: 49px;
+position: absolute;
+width: 110px;
+height: 30px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 16px;  
+}
+.txt{
+color: #d2aa4d;
+font-family: SF UI Text;
+font-weight: Regular;
+
+font-size: 29px;
+  position: absolute;
+  top: 17px;
+  left: 70px;
+
+}
+.la{
+position: absolute;
+left: 39px;
+top: 329px;
+
+}
+#cls{
+position: absolute;
+left: 299px;
+top: 14px;
+}
+#leo{
+display: none;
+width: 331px;
+height: 300px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 202px;
+left: 23px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+overflow: hidden;
+
+}
+.l{
+position: absolute;
+left: 74px;
+top: 319px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 16px;
+}
+.lo{
+position: absolute;
+left: 75px;
+top: 339px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 16px;
+}
+.li{
+width: 20px;
+height: 21px;
+position: absolute;
+  top: 324px;
+  left: 45%;
+  transform: RotateY(
+-180deg);
+
+}
+button{
+outline: none;
+border: none;
+}
+.eg{
+  display: none;
+  position: absolute;
+top: 92px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+.hn{
+position: absolute;
+display: none;
+top: 219px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+.cn{
+display: none;
+position: absolute;
+
+top: 154px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+
+.sn{
+  display: none;
+position: absolute;
+
+top: 284px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+.fn{
+  display: none;
+position: absolute;
+
+top: 348px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+.an{
+  display: none;
+position: absolute;
+
+top: 411px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+.bg{
+  display: none;
+position: absolute;
+
+top: 475px;
+left: 19rem;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left; 
+}
+
+.v39_762 {
+width: 29px;
+height: 29px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 827px;
+left: 38px;
+overflow: hidden;
+}
+.v39_763 {
+width: 28px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_764 {
+width: 28px;
+height: 27px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_765 {
+width: 23px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 351px;
+overflow: hidden;
+}
+.v39_766 {
+width: 23px;
+height: 11px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 15px;
+left: 0px;
+overflow: hidden;
+}
+.v39_767 {
+width: 23px;
+height: 11px;
+background: url("../images/v39_767.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_768 {
+width: 23px;
+height: 11px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_769 {
+width: 14px;
+height: 14px;
+background: url("../images/v39_769.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 4px;
+overflow: hidden;
+}
+.v39_770 {
+width: 14px;
+height: 14px;
+background: url("../images/v39_770.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_771 {
+width: 14px;
+height: 14px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_772 {
+width: 27px;
+height: 27px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 120px;
+overflow: hidden;
+}
+.eww{
+width: 27px;
+height: 27px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 195px;
+overflow: hidden;
+}
+
+.ew{
+  width: 27px;
+height: 27px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 270px;
+overflow: hidden;
+}
+
+body {
+  font-family: 'Didact Gothic', sans-serif;
+  color:#333;
+      box-sizing: border-box;
+}
+
+.v39_761 {
+width: 100%;
+height: 86px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 810px;
+left: 0px;
+box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+overflow: hidden;
+}
+.v39_762 {
+width: 29px;
+height: 29px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 827px;
+left: 38px;
+overflow: hidden;
+}
+.v39_763 {
+width: 28px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_764 {
+width: 28px;
+height: 27px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_765 {
+width: 23px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 351px;
+overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+ 
+  background-color: #f2f2f2;
+  height: 110px;
+  padding: 10px 0;
+  
+}
+
+nav {
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100px;
+}
+
+.logo img {
+  width: 100px;
+  
+}
+
+.lang-menu {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  margin-top: 25px;
+  position: absolute;
+  left: 11%;
+  top: 50%;
+}
+.lang-menu .selected-lang {
+  display: flex;   
+  justify-content: space-between;
+  line-height: 2;
+  cursor: pointer;
+}
+.lang-menu .selected-lang:before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url(https://www.countryflags.io/us/flat/32.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.lang-menu ul {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #f8f8f8;
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  width: 125px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+}
+
+
+.lang-menu ul li {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lang-menu ul li a {
+  text-decoration: none;
+  width: 125px;
+  padding: 5px 10px;
+  display: block;
+}
+
+.lang-menu ul li:hover {
+  background-color: #f2f2f2;
+}
+
+.lang-menu ul li a:before {
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.de:before {
+  background-image: url(https://www.countryflags.io/de/flat/32.png);
+}
+
+.en:before {
+  background-image: url(https://www.countryflags.io/us/flat/32.png);
+}
+.fr:before {
+  background-image: url(https://www.countryflags.io/fr/flat/32.png);
+}
+
+.ar:before {
+  background-image: url(https://www.countryflags.io/ae/flat/32.png);
+}
+
+
+.lang-menu:hover ul {
+  display: block;
+}
+
+  * {
+box-sizing: border-box;
+}
+body {
+font-size: 14px;
+}
+.v38_269 {
+width: 100%;
+height: 896px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_270 {
+width: 414px;
+height: 896px;
+width: 1300rem;
+height: 900rem;
+background: url(../2021.png);
+background-repeat: no-repeat;
+background-size: 10%;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_271 {
+width: 100%;
+height: 207px;
+background: rgba(0,0,0,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_272 {
+width: 100%;
+height: 135px;
+background: url(../2021.png);
+background-repeat: no-repeat;
+background-size: 140rem;
+opacity: 1;
+position: absolute;
+top: 124px;
+left: 0px;
+border-top-left-radius: 30px;
+border-top-right-radius: 30px;
+border-bottom-left-radius: 30px;
+border-bottom-right-radius: 30px;
+overflow: hidden;
+}
+.v38_273 {
+width: 140px;
+color: rgba(210,170,77,1);
+position: absolute;
+top: 69px;
+left: 30%;
+font-family: SF UI Text;
+font-weight: Bold;
+font-size: 24px;
+opacity: 1;
+text-align: center;
+}
+.v38_274 {
+width: 44px;
+height: 44px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 62px;
+left: 84%;
+border-radius: 50%;
+}
+.v38_275 {
+width: 44px;
+height: 44px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+
+overflow: hidden;
+}
+.v38_276 {
+width: 44px;
+height: 44px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_277 {
+width: 54px;
+height: 54px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 5px;
+left: 5px;
+overflow: hidden;
+}
+.v38_299 {
+width: 119px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 170px;
+left: 70px;
+font-family: SF UI Text;
+font-weight: Medium;
+font-size: 16px;
+opacity: 1;
+text-align: left;
+}
+.v38_300 {
+width: 19px;
+height: 19px;
+
+opacity: 1;
+position: absolute;
+top: 168px;
+left: 39px;
+overflow: hidden;
+}
+.v38_301 {
+width: 8px;
+height: 8px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 5px;
+overflow: hidden;
+}
+.v38_302 {
+width: 8px;
+height: 8px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_303 {
+width: 8px;
+height: 8px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v38_304 {
+width: 15px;
+height: 9px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 9px;
+left: 2px;
+overflow: hidden;
+}
+.v38_305 {
+width: 15px;
+height: 9px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_306 {
+width: 15px;
+height: 9px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.name {
+color: #fff;
+}
+.v38_308 {
+width: 20px;
+height: 21px;
+
+opacity: 1;
+position: absolute;
+top: 169px;
+left: 45%;
+overflow: hidden;
+transform: rotateY(-180deg);
+}
+.v38_309 {
+width: 12px;
+height: 21px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 4px;
+overflow: hidden;
+}
+.v38_310 {
+width: 12px;
+height: 21px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_311 {
+width: 12px;
+height: 21px;
+background: rgba(0,0,0,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_738 {
+color: rgba(0,0,0,1);
+position: absolute;
+top: 243px;
+left: 70px;
+font-family: SF UI Text;
+font-weight: Medium;
+font-size: 16px;
+opacity: 1;
+text-align: left;
+}
+.v39_739 {
+width: 48px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 269px;
+left: 88px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 14px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v39_741 {
+width: 20px;
+height: 21px;
+
+opacity: 1;
+position: absolute;
+top: 255px;
+left: 45%;
+overflow: hidden;
+transform: RotateY(-180deg);
+}
+.v39_742 {
+width: 12px;
+height: 21px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 4px;
+overflow: hidden;
+}
+.v39_743 {
+width: 12px;
+height: 21px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_744 {
+width: 12px;
+height: 21px;
+background: rgba(0,0,0,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_745 {
+width: 19px;
+height: 19px;
+
+opacity: 1;
+position: absolute;
+top: 255px;
+left: 39px;
+overflow: hidden;
+}
+.v39_746 {
+width: 18px;
+height: 19px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_747 {
+width: 18px;
+height: 19px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_748 {
+
+height: 13px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 270px;
+left: 70px;
+overflow: hidden;
+}
+.v39_749 {
+width: 13px;
+height: 13px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v39_750 {
+width: 13px;
+height: 13px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v39_751 {
+width: 14px;
+height: 14px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 1px;
+left: 1px;
+overflow: hidden;
+}
+.v39_891 {
+width: 414px;
+height: 86px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 810px;
+left: 0px;
+box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+overflow: hidden;
+}
+.v39_892 {
+width: 29px;
+height: 29px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 827px;
+left: 38px;
+overflow: hidden;
+}
+.v39_893 {
+width: 28px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_894 {
+width: 28px;
+height: 27px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_895 {
+width: 23px;
+height: 27px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 351px;
+overflow: hidden;
+}
+.v39_896 {
+width: 23px;
+height: 11px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 15px;
+left: 0px;
+overflow: hidden;
+}
+.v39_897 {
+width: 23px;
+height: 11px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_898 {
+width: 23px;
+height: 11px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_899 {
+width: 14px;
+height: 14px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 4px;
+overflow: hidden;
+}
+.v39_900 {
+width: 14px;
+height: 14px;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_901 {
+width: 14px;
+height: 14px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+.v39_902 {
+width: 27px;
+height: 27px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 142px;
+overflow: hidden;
+}
+.v39_903 {
+width: 9px;
+height: 9px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 8px;
+}
+.v39_904 {
+width: 9px;
+height: 9px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 5px;
+left: 17px;
+}
+.v39_905 {
+width: 9px;
+height: 9px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 5px;
+left: 0px;
+}
+.v39_906 {
+width: 7px;
+height: 7px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 11px;
+left: 9px;
+}
+.v39_907 {
+width: 11px;
+height: 7px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 19px;
+left: 7px;
+}
+.v39_908 {
+width: 5px;
+height: 4px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 22px;
+left: 20px;
+}
+.v39_909 {
+width: 6px;
+height: 6px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 15px;
+left: 18px;
+}
+.v39_910 {
+width: 6px;
+height: 6px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 15px;
+left: 2px;
+}
+.v39_911 {
+width: 5px;
+height: 4px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 22px;
+left: 1px;
+}
+.v39_912 {
+width: 27px;
+height: 27px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 828px;
+left: 246px;
+overflow: hidden;
+}
+.v39_913 {
+width: 26px;
+height: 26px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v39_914 {
+width: 13px;
+height: 13px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 9px;
+}
+.v39_915 {
+width: 8px;
+height: 10px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 16px;
+left: 0px;
+}
+.v39_916 {
+width: 19px;
+height: 8px;
+background: rgba(234,223,198,1);
+opacity: 1;
+position: absolute;
+top: 14px;
+left: 6px;
+}
+.v38_384 {
+width: 360px;
+height: 537px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 300px;
+left: 29px;
+overflow: hidden;
+}
+.v38_385 {
+width: 360px;
+height: 537px;
+background: rgba(255,255,255,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+overflow: hidden;
+}
+.v38_386 {
+width: 201px;
+color: rgba(210,170,77,1);
+position: absolute;
+top: 25px;
+left: 81px;
+font-family: SF UI Text;
+font-weight: Bold;
+font-size: 24px;
+opacity: 1;
+text-align: center;
+}
+.v38_387 {
+width: 21px;
+height: 21px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 29px;
+left: 314px;
+overflow: hidden;
+}
+.v38_388 {
+width: 4px;
+height: 27px;
+background: rgba(121,121,121,1);
+opacity: 1;
+position: absolute;
+top: 2px;
+left: 0px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+transform: rotate(-45deg);
+overflow: hidden;
+}
+.v38_389 {
+width: 4px;
+height: 27px;
+background: rgba(121,121,121,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 19px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+overflow: hidden;
+}
+.v38_390 {
+
+color: rgba(0,0,0,1);
+position: absolute;
+top: 92px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_392 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/us/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 87px;
+left: 29px;
+overflow: hidden;
+}
+.v38_393 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_394 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_395 {
+width: 33px;
+height: 34px;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 2px;
+left: 2px;
+overflow: hidden;
+}
+.v38_396 {
+width: 69px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 156px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_398 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/cn/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 151px;
+left: 29px;
+overflow: hidden;
+}
+.v38_399 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_400 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_401 {
+width: 38px;
+height: 37px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 3px;
+left: 4px;
+overflow: hidden;
+}
+.v38_402 {
+width: 44px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 220px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_404 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/in/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 215px;
+left: 29px;
+overflow: hidden;
+}
+.v38_405 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_406 {
+width: 30px;
+height: 30px;
+background: rgba(196,196,196,1);
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+}
+.v38_407 {
+width: 30px;
+height: 30px;
+
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 0px;
+left: 0px;
+overflow: hidden;
+}
+.v38_408 {
+width: 68px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 284px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_427 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/bd/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 471px;
+left: 29px;
+overflow: hidden;
+}
+.v38_410 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/es/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 279px;
+left: 29px;
+overflow: hidden;
+}
+
+.v38_414 {
+width: 59px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 348px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_416 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/fr/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 343px;
+left: 29px;
+overflow: hidden;
+}
+
+.v38_420 {
+width: 55px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 412px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+.name {
+color: #fff;
+}
+.v38_422 {
+width: 30px;
+height: 30px;
+background-image: url(https://www.countryflags.io/sa/flat/32.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 407px;
+left: 29px;
+overflow: hidden;
+}
+
+.v38_426 {
+
+width: 63px;
+color: rgba(0,0,0,1);
+position: absolute;
+top: 476px;
+left: 76px;
+font-family: SF UI Text;
+font-weight: Regular;
+font-size: 18px;
+opacity: 1;
+text-align: left;
+}
+
+.v38_431 {
+width: 12px;
+height: 17px;
+background: rgba(210,170,77,1);
+opacity: 1;
+position: absolute;
+top: 96px;
+left: 335px;
+}
+
+
+  
+.v38_385 {
+    width: 360px;
+    height: 537px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+}
+.v38_384 {
+  width: 360px;
+  height: 537px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 300px;
+  left: 29px;
+  overflow: hidden;
+}
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+overflow-x: hidden; 
+  }
+  .v3_44 {
+    width: 100%;
+  height: 120vh;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 300rem;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v3_45 {
+    width: 414px;
+    height: 896px;
+    
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v3_47 {
+    width: 360px;
+    height: 60px;
+    background: linear-gradient(rgba(218,182,93,1), rgba(202,157,60,1));
+    opacity: 1;
+    position: absolute;
+    top: 519px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+  }
+  .v3_48 {
+    width: 61px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 536px;
+    left: 177px;
+    font-family: SF UI Text;
+    font-weight: Bold;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v3_49 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 353px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+  }
+  .v3_50 {
+    width: 105px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 375px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v3_51 {
+    width: 73px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 296px;
+    left: 171px;
+    font-family: SF UI Text;
+    font-weight: Medium;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v3_52 {
+    width: 360px;
+    height: 60px;
+    background: rgba(245,245,245,1);
+    opacity: 1;
+    position: absolute;
+    top: 427px;
+    left: 27px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+  }
+  .v3_53 {
+    width: 73px;
+    color: rgba(116,116,116,1);
+    position: absolute;
+    top: 448px;
+    left: 48px;
+    font-family: SF UI Text;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v3_54 {
+    width: 292px;
+     position: absolute;
+    top: 598px;
+    left: 16%;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .v3_55 {
+    width: 260px;
+    height: 162px;
+    background: url(../images/v3_55.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 116px;
+    left: 77px;
+    overflow: hidden;
+    animation: rotation 3s infinite linear;
+}
+
+@keyframes rotation {
+  100%{ transform:rotatey(360deg) }
+}
+  .v3_56 {
+    width: 172px;
+    color: rgba(205,162,66,1);
+    position: absolute;
+    top: 267px;
+    left: 109px;
+    font-family: SF UI Text;
+    font-weight: 900;
+    font-size: 20px;
+    opacity: 1;
+  }
+    /* text-align: center;
+  }
+  .v38_79 {
+    width: 33px;
+    height: 33px;
+    background: rgba(196,196,196,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+  }
+  .v38_80 {
+    width: 33px;
+    height: 33px;
+    background: rgba(196,196,196,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+  }
+  .v38_81 {
+    width: 37px;
+    height: 38px;
+    background: url("https://www.figma.com/file/CMmYDzo4MvC8RzoxlUEgoQ/global-opertaions-department-Copy?node-id=38%3A78");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    overflow: hidden;
+  }
+  .v38_82 {
+    width: 25px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 50px;
+    left: 369px;
+    font-family: SF UI Text;
+    font-weight: Semibold;
+    font-size: 18px;
+    opacity: 1;
+    text-align: left;
+  }
+  </style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

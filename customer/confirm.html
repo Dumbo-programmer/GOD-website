@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+       
+        <meta name="viewport" content="width=device-width, initial-size=1.0">
+        <title>Document</title>
+   <div class="v6_216">
+         <div class="v6_217"></div>
+         <div class="v6_218">
+
+         </div>
+         <div class="v6_219">
+
+         </div>
+         <span class="v6_220">Confirmation</span>
+         <div class="v6_221"></div>
+ <span class="v6_222">Thank you for creating an account.
+Please check your email for
+confirmation.</span>
+<button class="v6_223" onclick="lol()" id="submit" style="width: auto;outline: none;border: none;">Back to Login</button>
+
+
+<div class="v6_224">
+    <div class="v6_225">
+        <img class="v6_225" src="../Verification.png"></div>
+</div>
+</div>
+</div>
+<script>
+  function lol(){
+window.location = 'Dashboard.html';
+//firebase.auth().signOut().then(console.log('out')) 
+  }
+  //
+   const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+
+   firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore()
+// Initialize Firebase
+
+
+
+/*firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    var uid = user.uid;
+    window.location.replace("Dashboard.html");
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});*/
+</script>
+<style>
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+ 
+}
+.v6_216 {
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v6_217 {
+  width: 1400rem;
+  height: 900rem;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 10%;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v6_218 {
+  width: 100%;
+  height: 207px;
+  background: rgba(0,0,0,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v6_219 {
+  width: 100%;
+  height: 135px;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 140rem;
+  opacity: 1;
+  position: absolute;
+  top: 124px;
+  left: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+.v6_220 {
+  width: 159px;
+  color: rgba(210,170,77,1);
+  position: absolute;
+  top: 69px;
+  left: 124px;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: center;
+}
+.v6_221 {
+  width: 348px;
+  height: 209px;
+  background: rgba(255,249,238,1);
+  opacity: 1;
+  position: absolute;
+  top: 207px;
+  left: 32px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+.v6_222 {
+  width: 269px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 327px;
+  left: 72px;
+  font-family: SF UI Text;
+  font-weight: Medium;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+.v6_223 {
+  width: 105px;
+  color: rgba(210,170,77,1);
+  position: absolute;
+  top: 451px;
+  left: 154px;
+  font-family: SF UI Text;
+  font-weight: Medium;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+.v6_224 {
+  width: 58px;
+  height: 58px;
+  opacity: 1;
+  position: absolute;
+  top: 245px;
+  left: 177px;
+  overflow: hidden;
+}
+.v6_225 {
+  width: 58px;
+  height: 58px;
+  color: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity=
+"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+crossorigin="anonymous">
+</script>
+<script src="server.js"></script>
+</body>
+</html>

@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=SF+UI+Text&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Proxima+Nova&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-size=1.0">
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="v534_791">
+            <div class="v9_184"></div>
+            <div class="v539_295"></div>
+            <div class="v539_296"></div>
+            <div class="v534_794"></div>
+            <span class="v534_795">Messages</span>
+            <div class="v534_796"></div>
+            <img src="../2263539.png" class="v534_797">
+            <div class="name"></div>
+            <span id="name" class="v534_853"></span>
+            <span class="v534_854">BACK</span>
+            <input
+                type="image"
+                id="back"
+                src="../475653.png"
+                class="v534_855"
+            >
+            <button id="del" class="v534_858">
+                <div class="v534_859"></div>
+                <div class="v534_860"></div>
+                <div class="v534_861"></div>
+            </button>
+            <input
+                id="sendt"
+                placeholder="Write message here..."
+                type="text"
+                class="v534_872"
+            >
+            <div>
+            <ul >
+                <li id="r" ></li>
+            </ul>
+            <ul>
+                <li id="s" dir="rtl"></li>
+            </ul>
+          </div>
+            <input
+                type="image"
+                src="../paper-plane (1) 1.png"
+                class="v534_874"
+                id="send"
+            >
+            <div class="v540_905"></div>
+           
+            <div class="v540_874"></div>
+            <div class="v39_762">
+                <a href="Dashboard.html">
+                    <img src="../Home.png" class="v39_763">
+                </a>
+            </div>
+            <a href="message.html">
+                <img src="../chat (3) 9.png" class="ew">
+            </a>
+            <a href="payment.html">
+                <img class="eww" src="../income 1.png">
+            </a>
+            <a href="myacc.html">
+                <img src="../Profile.png" class="v39_765">
+            </a>
+            <a href="customer.html">
+                <img src="../rating 2.png" class="v39_772">
+            </a>
+        </div>
+        <script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyDa4LA1g6SVfiS6nLe_GepR3laqYSjJAgM",
+  authDomain: "its-called-god.firebaseapp.com",
+  databaseURL: "https://its-called-god-default-rtdb.firebaseio.com",
+  projectId: "its-called-god",
+  storageBucket: "its-called-god.appspot.com",
+  messagingSenderId: "275751011368",
+  appId: "1:275751011368:web:2cb96ef26c597f1b55611d",
+  measurementId: "G-Z031GSPW7N"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore()
+    //w-414
+    //h-1407
+
+    //up
+    //h-207
+    //round
+    //135
+    /*.v9_184 {
+  width: 414px;
+  height: 100%;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}collection('received message').doc().set({
+
+})
+*/
+document.getElementById('name').innerText = localStorage.getItem('customer')
+document.getElementById('del').addEventListener('click', function() {
+  window.location = 'message.html';
+})
+document.getElementById("send").addEventListener('click', function(){
+const id = localStorage.getItem("ID")
+
+
+
+})
+document.getElementById("back").addEventListener('click', function(){
+  window.location = 'message.html';
+})
+firebase.firestore().collection('Added Accounts').doc(localStorage.getItem("name")).collection('sent').get()
+.then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const p = document.createElement('p');
+          p.textContent = doc.id 
+          const sp = document.createElement('span')
+          sp.textContent = doc.data().date
+          sp.setAttribute('id', 'date')    
+         const r = document.getElementById('r')
+         r.appendChild(p)
+         p.setAttribute('id', 'onee')
+       
+
+      })
+    })
+    document.getElementById('send').addEventListener('click', function() {
+      const p = document.createElement('p');
+      const d = document.getElementById('sendt').value
+      const sp = document.createElement('span')
+      var da = new Date(); // for now
+da.getHours(); // => 9
+da.getMinutes(); // =>  30
+da.getSeconds()
+      sp.textContent = da
+      console.log(sp)
+      sp.setAttribute('id', 'date')    
+      p.textContent = d
+      
+          p.setAttribute('id', 'onee')
+         const r = document.getElementById('r')
+         r.appendChild(p)
+         db.collection('Added Accounts').doc(localStorage.getItem('name')).collection('sent').doc(d).set({
+             data: d,
+             date: sp.innerText,
+         })
+    })
+
+    firebase.firestore().collection('Added Accounts').doc(localStorage.getItem("name")).collection('received').get()
+.then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const p = document.createElement('p');
+          p.textContent = doc.id 
+         const r = document.getElementById('s')
+         r.appendChild(p)
+         p.setAttribute('id', 'twoo')
+       
+      })
+    })
+        </script>
+        <style>
+   ::-webkit-scrollbar {
+  width: 10px;
+}
+  ::-webkit-scrollbar-track {
+  background: rgba(248, 248, 248, 0);
+}
+  ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0);
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: rgba(184, 132, 11, 0);
+} 
+  
+
+li{
+  list-style: none;
+
+}
+
+ul{
+  overflow: scroll;
+  height: 500px;
+}
+.v39_762 {
+    width: 29px;
+    height: 29px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 827px;
+    left: 38px;
+    overflow: hidden;
+}
+.v39_763 {
+    width: 28px;
+    height: 27px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+.ew {
+    width: 27px;
+    height: 27px;
+     opacity: 1;
+    position: absolute;
+    top: 828px;
+    left: 69%;
+    overflow: hidden;
+}
+.eww {
+    width: 27px;
+    height: 27px;
+     opacity: 1;
+    position: absolute;
+    top: 828px;
+    left: 50%;
+    overflow: hidden;
+}
+.v39_765 {
+    width: 23px;
+    height: 27px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 828px;
+    left: 88%;
+    overflow: hidden;
+}
+.v39_772 {
+    width: 27px;
+    height: 27px;
+    opacity: 1;
+    position: absolute;
+    top: 828px;
+    left: 30%;
+    overflow: hidden;
+}
+
+          #onee{
+            Width: 301px;
+Height: 77px;
+    font-size: 22px;
+    background-color: #FFF6E0;
+    left: 29px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: left;
+    margin-bottom: 96px;
+          }
+
+
+          #twoo{
+            Height: 80px;
+    Width: 162px;
+    font-size: 22px;
+    background-color: #EFEFEF;
+    left: 29px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: left;
+    margin-bottom: 96px;
+          }
+          #r{
+            position: relative;
+    left: 40%;
+    height: 465px;
+    overflow: scroll;
+
+}
+          #s{
+    
+            position: absolute;
+    top: 308px;
+    left: 1%;
+    height: 381px;
+    overflow: scroll;
+   
+} button{
+    outline: none;
+    border: none;
+  }
+    .v9_184 {
+  width: 1300rem;
+  height: 900rem;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 12%;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+    .v539_295 {
+  width: 100%;
+  height: 207px;
+  background: rgba(0,0,0,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v539_296 {
+  width: 414px;
+  height: 135px;
+
+  position: absolute;
+  top: 124px;
+  left: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+
+
+  * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v534_791 {
+    width: 100%;
+  height: 900px;
+  
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+
+}
+.v534_792 {
+  width: 414px;
+  height: 896px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v534_793 {
+  width: 414px;
+  height: 207px;
+  background: rgba(0,0,0,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v534_794 {
+  width: 100%;
+  height: 135px;
+  background: url(../2021.png);
+  background-repeat: no-repeat;
+  background-size: 190rem;
+  opacity: 1;
+  position: absolute;
+  top: 124px;
+  left: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+.v534_795 {
+  width: 122px;
+  color: rgba(210,170,77,1);
+  position: absolute;
+  top: 69px;
+  left: 31%;
+  font-family: SF UI Text;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: center;
+}
+.v534_796 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: absolute;
+  top: 62px;
+  left: 70%;
+  border-radius: 50%;
+}
+.v534_797 {
+  width: 44px;
+  height: 44px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 62px;
+  left: 70%;
+  overflow: hidden;
+}
+.v534_798 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v534_799 {
+  width: 54px;
+  height: 54px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.v534_849 {
+  width: 44px;
+  height: 44px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 227px;
+  left: 14px;
+  overflow: hidden;
+}
+.v534_850 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v534_851 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v534_852 {
+  width: 123px;
+  height: 82px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 3px;
+  left: 39px;
+  overflow: hidden;
+}
+.v534_853 {
+  width: 41px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 151px;
+  left: 187px;
+  font-family: Proxima Nova;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_854 {
+  width: 54px;
+  color: rgba(164,164,164,1);
+  position: absolute;
+  top: 151px;
+  left: 41px;
+  font-family: Proxima Nova;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_855 {
+  
+  height: 17px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 154px;
+  left: 19px;
+  overflow: hidden;
+}
+.v534_856 {
+  width: 9px;
+  height: 17px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v534_857 {
+  width: 9px;
+  height: 17px;
+  background: rgba(164,164,164,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+.v534_858 {
+  width: 20px;
+  height: 20px;
+  
+  opacity: 1;
+  position: absolute;
+  top: 152px;
+  left: 330px;
+  overflow: hidden;
+  background-color: #bfd3f0;
+}
+.v534_859 {
+  width: 5px;
+  height: 1px;
+  background: rgba(164,164,164,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+.v534_860 {
+  width: 12px;
+  height: 13px;
+  background: rgba(164,164,164,1);
+  opacity: 1;
+  position: absolute;
+  top: 6px;
+  left: 4px;
+}
+.v534_861 {
+  width: 15px;
+  height: 2px;
+  background: rgba(164,164,164,1);
+  opacity: 1;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+.v534_862 {
+  width: 301px;
+  height: 67px;
+  background: rgba(239,239,239,1);
+  opacity: 1;
+  position: absolute;
+  top: 227px;
+  left: 68px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+.v534_863 {
+  width: 151px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 242px;
+  left: 83px;
+  font-family: SF UI Text;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_864 {
+  width: 57px;
+  color: rgba(163,163,163,1);
+  position: absolute;
+  top: 302px;
+  left: 299px;
+  font-family: SF UI Text;
+  font-weight: Medium;
+  font-size: 12px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_865 {
+  width: 301px;
+  height: 77px;
+  background: rgba(255,245,224,1);
+  opacity: 1;
+  position: absolute;
+  top: 342px;
+  left: 47px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+.v534_866 {
+  width: 244px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 357px;
+  left: 62px;
+  font-family: SF UI Text;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_867 {
+  width: 57px;
+  color: rgba(163,163,163,1);
+  position: absolute;
+  top: 429px;
+  left: 280px;
+  font-family: SF UI Text;
+  font-weight: Medium;
+  font-size: 12px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_868 {
+  width: 44px;
+  height: 44px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 342px;
+  left: 356px;
+  overflow: hidden;
+}
+.v534_869 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v534_870 {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,196,196,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+}
+.v534_871 {
+  width: 69px;
+  height: 69px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  overflow: hidden;
+}
+.v534_872 {
+  width: 80%;
+  height: 60px;
+  background: rgba(245,245,245,1);
+  opacity: 1;
+  position: absolute;
+  top: 729px;
+  left: 28px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.v534_873 {
+  width: 165px;
+  color: rgba(55,55,55,1);
+  position: absolute;
+  top: 751px;
+  left: 38px;
+  font-family: SF UI Text;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.v534_874 {
+  width: 26px;
+  height: 26px;
+ 
+  opacity: 1;
+  position: absolute;
+  top: 746px;
+  left: 77%;
+  overflow: hidden;
+}
+.v534_875 {
+  width: 4px;
+  height: 5px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 9px;
+}
+.v534_876 {
+  width: 26px;
+  height: 21px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+.v540_905 {
+  width: 100%;
+  height: 90px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 810px;
+  left: 0px;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.20000000298023224);
+  overflow: hidden;
+}
+.v540_906 {
+  width: 29px;
+  height: 29px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 828px;
+  left: 27px;
+  overflow: hidden;
+}
+.v540_907 {
+  width: 28px;
+  height: 27px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_908 {
+  width: 28px;
+  height: 27px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v540_909 {
+  width: 23px;
+  height: 27px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 829px;
+  left: 361px;
+  overflow: hidden;
+}
+.v540_910 {
+  width: 23px;
+  height: 11px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_911 {
+  width: 23px;
+  height: 11px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_912 {
+  width: 23px;
+  height: 11px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v540_913 {
+  width: 14px;
+  height: 14px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  overflow: hidden;
+}
+.v540_914 {
+  width: 14px;
+  height: 14px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_915 {
+  width: 14px;
+  height: 14px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v540_916 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 829px;
+  left: 111px;
+  overflow: hidden;
+}
+.v540_917 {
+  width: 9px;
+  height: 9px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+.v540_918 {
+  width: 9px;
+  height: 9px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 17px;
+}
+.v540_919 {
+  width: 9px;
+  height: 9px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.v540_920 {
+  width: 7px;
+  height: 7px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+}
+.v540_921 {
+  width: 11px;
+  height: 7px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 7px;
+}
+.v540_922 {
+  width: 5px;
+  height: 4px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 20px;
+}
+.v540_923 {
+  width: 6px;
+  height: 6px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 18px;
+}
+.v540_924 {
+  width: 6px;
+  height: 6px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 2px;
+}
+.v540_925 {
+  width: 5px;
+  height: 4px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 22px;
+  left: 1px;
+}
+.v540_926 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 829px;
+  left: 276px;
+  overflow: hidden;
+}
+.v540_927 {
+  width: 27px;
+  height: 25px;
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_928 {
+  width: 27px;
+  height: 25px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_929 {
+  width: 27px;
+  height: 25px;
+  background: rgba(210,170,77,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.v540_930 {
+  width: 27px;
+  height: 27px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 829px;
+  left: 194px;
+  overflow: hidden;
+}
+.v540_931 {
+  width: 27px;
+  height: 27px;
+ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v540_932 {
+  width: 12px;
+  height: 12px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+.v540_933 {
+  width: 1px;
+  height: 1px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 19px;
+  left: 19px;
+}
+.v540_934 {
+  width: 14px;
+  height: 6px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+}
+.v540_935 {
+  width: 17px;
+  height: 19px;
+  background: rgba(234,223,198,1);
+  opacity: 1;
+  position: absolute;
+  top: 7px;
+  left: 0px;
+}
+        </style>
+    </body>
+</html>
