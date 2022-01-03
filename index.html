@@ -41,7 +41,7 @@
             <div class="v2_3"></div>
             <input
                 type="image"
-                src="eng.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/640px-United-kingdom_flag_icon_round.svg.png"
                 id="bt"
                 class="v38_75"
             ></input>
@@ -118,8 +118,15 @@ document.getElementById("lang").style.display = 'none';
     document.getElementById("en").addEventListener('click', function(){
       localStorage.setItem('language', 'english');
       document.getElementById("en").style.backgroundColor = 'teal'
-   
-    
+   //document.getElementById("en").style.backgroundColor = 'white'
+   document.getElementById("hi").style.backgroundColor = 'white'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+    //  document.getElementById("en").style.backgroundColor = 'white'
+      document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+     // document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
     
     
     
@@ -128,33 +135,77 @@ document.getElementById("lang").style.display = 'none';
     document.getElementById("ch").addEventListener('click', function(){
       localStorage.setItem('language', 'chinese');
       document.getElementById("ch").style.backgroundColor = 'teal'
-   
+      document.getElementById("hi").style.backgroundColor = 'white'
+      document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+      document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
+
+
     })
       document.getElementById("hi").addEventListener('click', function(){
       localStorage.setItem('language', 'hindi');
       document.getElementById("hi").style.backgroundColor = 'teal'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+    
+      document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+      document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
     })
       document.getElementById("sp").addEventListener('click', function(){
       localStorage.setItem('language', 'spanish');
       document.getElementById("sp").style.backgroundColor = 'teal'
+      document.getElementById("hi").style.backgroundColor = 'white'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
+     // document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+      document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
     })
 
     document.getElementById("fr").addEventListener('click', function(){
       localStorage.setItem('language', 'french');
       document.getElementById("fr").style.backgroundColor = 'teal'
-   
+      document.getElementById("hi").style.backgroundColor = 'white'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
+      document.getElementById("sp").style.backgroundColor = 'white'
+    //  document.getElementById("fr").style.backgroundColor = 'white'
+      document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
     })
 
     document.getElementById("ar").addEventListener('click', function(){
       localStorage.setItem('language', 'arabic');
       document.getElementById("ar").style.backgroundColor = 'teal'
-   
+      document.getElementById("hi").style.backgroundColor = 'white'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
+      document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+     // document.getElementById("ar").style.backgroundColor = 'white'
+      document.getElementById("bn").style.backgroundColor = 'white'
     })
 
     document.getElementById("bn").addEventListener('click', function(){
       localStorage.setItem('language', 'bangla');
       document.getElementById("bn").style.backgroundColor = 'teal'
-       
+      document.getElementById("hi").style.backgroundColor = 'white'
+      ////////
+      document.getElementById("ch").style.backgroundColor = 'white'
+      document.getElementById("en").style.backgroundColor = 'white'
+      document.getElementById("sp").style.backgroundColor = 'white'
+      document.getElementById("fr").style.backgroundColor = 'white'
+      document.getElementById("ar").style.backgroundColor = 'white'
+     // document.getElementById("bn").style.backgroundColor = 'white'
     })
 
     if(localStorage.getItem('language') == 'english'){
@@ -162,7 +213,7 @@ document.getElementById("one").innerText = 'Visit Jesus-Today'
 document.getElementById("two").innerText ='Place Your Burdens'
 document.getElementById("three").innerText = 'EN'
 document.getElementById("four").innerText = 'Right Hand of G.O.D'
-document.getElementById("bt").src = "eng-removebg-preview.png"
+document.getElementById("bt").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/640px-United-kingdom_flag_icon_round.svg.png"
 document.getElementById("en").style.backgroundColor = 'teal'
     
 }else if(localStorage.getItem('language') == 'chinese'){
@@ -171,7 +222,7 @@ document.getElementById("en").style.backgroundColor = 'teal'
 document.getElementById("two").innerText = '放下你的負擔'
 document.getElementById("three").innerText = 'CH'
 document.getElementById("four").innerText = 'G.O.D的右手'
-document.getElementById("bt").src = "https://www.countryflags.io/cn/flat/32.png"
+document.getElementById("bt").src = "https://www.clipartmax.com/png/middle/40-405631_china-flag-round-png-china-flag-icon-png.png"
 //document.getElementById("cn").style.display = 'block'
 document.getElementById("ch").style.backgroundColor = 'teal'
 }else if(localStorage.getItem('language') == 'hindi'){
@@ -179,7 +230,7 @@ document.getElementById("ch").style.backgroundColor = 'teal'
 document.getElementById("two").innerText = 'अपना बोझ डाल दो'
 document.getElementById("three").innerText = 'HN'
 document.getElementById("four").innerText = 'भगवान का दाहिना हाथ'
-document.getElementById("bt").src = "https://www.countryflags.io/in/flat/32.png"
+document.getElementById("bt").src = "https://www.pngfind.com/pngs/m/12-120175_indian-flag-regional-circle-indian-flag-in-circle.png"
 //document.getElementById("hn").style.display = 'block'
 document.getElementById("hi").style.backgroundColor = 'teal'
 }else if(localStorage.getItem('language') == 'spanish'){
@@ -187,7 +238,7 @@ document.getElementById("hi").style.backgroundColor = 'teal'
 document.getElementById("two").innerText ='coloca tu carga'
 document.getElementById("three").innerText = 'SP'
 document.getElementById("four").innerText = 'mano derecha de dios'
-document.getElementById("bt").src = "https://www.countryflags.io/es/flat/32.png"
+document.getElementById("bt").src = "https://www.clipartmax.com/png/middle/331-3311473_espa%C3%B1ol-spain-flag-circle-png.png"
 //document.getElementById("sn").style.display = 'block'
 document.getElementById("sp").style.backgroundColor = 'teal'
 }else if(localStorage.getItem('language') == 'french'){
@@ -195,7 +246,7 @@ document.getElementById("sp").style.backgroundColor = 'teal'
 document.getElementById("two").innerText ='place ton fardeau'
 document.getElementById("three").innerText = 'FR'
 document.getElementById("four").innerText = 'main droite de dieu'
-document.getElementById("bt").src = "https://www.countryflags.io/fr/flat/32.png"
+document.getElementById("bt").src = "data:image/jpeg;base64,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"
 //document.getElementById("fn").style.display = 'block'
 document.getElementById("fr").style.backgroundColor = 'teal'
 }
@@ -205,7 +256,7 @@ document.getElementById("fr").style.backgroundColor = 'teal'
 document.getElementById("two").innerText ='ضع العبء'
 document.getElementById("three").innerText = 'AR'
 document.getElementById("four").innerText = "اليد اليمنى"
-document.getElementById("bt").src = "https://www.countryflags.io/sa/flat/32.png"
+document.getElementById("bt").src = "https://www.clipartmax.com/png/middle/267-2670949_united-arab-emirates-round-flag.png"
 //document.getElementById("an").style.display = 'block'
 document.getElementById("ar").style.backgroundColor = 'teal'
 }else if(localStorage.getItem('language') == 'bangla'){
@@ -213,7 +264,7 @@ document.getElementById("ar").style.backgroundColor = 'teal'
 document.getElementById("two").innerText ='আপনার বোঝা রাখুন'
 document.getElementById("three").innerText = 'BN'
 document.getElementById("four").innerText = 'শ্বরের ডান হাত'
-document.getElementById("bt").src = "https://www.countryflags.io/bd/flat/32.png"
+document.getElementById("bt").src = "https://media.istockphoto.com/vectors/flag-of-bangladesh-vector-id472330667?k=20&m=472330667&s=612x612&w=0&h=pRCEQ1hXZuXKQDAskpyoJaFmyJlFnMrI_vZeqLYA-oY="
 //document.getElementById("bg").style.display = "block"
 document.getElementById("bn").style.backgroundColor = 'teal'
     }
@@ -321,6 +372,7 @@ button{
  left: 26% !important;
  padding: 5px;
  width: 42% !important;
+ font-size: 14px !important;
 }
 .v2_4{
   left: 22% !important;
